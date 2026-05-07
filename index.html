@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toolbox Instrumentação</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <nav class="menu">
+        <button onclick="showTab('pt100')">PT100</button>
+        <button onclick="showTab('ma')">4-20mA</button>
+        <button onclick="showTab('motor')">Motores</button>
+    </nav>
+
+    <main id="app">
+        <section id="pt100" class="tab-content active">
+            <h2>Calculadora PT100</h2>
+            <label>Resistência (Ohms):</label>
+            <input type="number" id="res-input" placeholder="Ex: 138.51" step="0.01">
+            <button onclick="calcPT100()">Calcular Temperatura</button>
+            <div id="res-pt100" class="result"></div>
+        </section>
+
+        <section id="ma" class="tab-content">
+            <h2>Conversor 4-20mA</h2>
+            <input type="number" id="f-min" placeholder="Faixa Mínima (ex: 0)">
+            <input type="number" id="f-max" placeholder="Faixa Máxima (ex: 600)">
+            <hr>
+            <label>Converter Corrente para Valor:</label>
+            <input type="number" id="ma-in" placeholder="mA">
+            <button onclick="calcMAtoVal()">Calcular Valor</button>
+            <hr>
+            <label>Converter Valor para Corrente:</label>
+            <input type="number" id="val-in" placeholder="Valor">
+            <button onclick="calcValtoMA()">Calcular mA</button>
+            <div id="res-ma" class="result"></div>
+        </section>
+
+        <section id="motor" class="tab-content">
+            <h2>Motor 380V Trifásico</h2>
+            <input type="number" id="m-cv" placeholder="Potência em CV">
+            <input type="number" id="m-eff" placeholder="Rendimento (Padrão 0.85)">
+            <input type="number" id="m-fp" placeholder="Fator Potência (Padrão 0.85)">
+            <button onclick="calcMotor()">Dimensionar</button>
+            <div id="res-motor" class="result"></div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
